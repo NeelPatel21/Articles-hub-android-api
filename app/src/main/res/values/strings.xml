@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Articles hub</string>
+    <string name="ser_base_url">https://articleshub.herokuapp.com</string>
+</resources>

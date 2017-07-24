@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.neel.articleshub.MainActivity">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/publishdateText"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text|textPersonName"
+        android:text="title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"/>
+
+    <TextView
+        android:id="@+id/contantText"
+        android:layout_width="364dp"
+        android:layout_height="301dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="csaccsacacacacccsasacacccscaccscacsasaac"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="179dp"/>
+
+    <TextView
+        android:id="@+id/publishdateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/authorText"
+        android:layout_alignStart="@+id/contantText"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:text="21-09-96"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="76dp"/>
+
+    <TextView
+        android:id="@+id/authorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/contantText"
+        android:layout_alignStart="@+id/publishdateText"
+        android:layout_marginBottom="73dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="author"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="127dp"/>
+
+</RelativeLayout>
