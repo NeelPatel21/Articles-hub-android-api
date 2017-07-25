@@ -1,4 +1,4 @@
-package com.neel.articleshub.restapi.request;
+package com.neel.articleshubapi.restapi.request;
 
 import android.util.Log;
 
@@ -16,9 +16,9 @@ public class RequestHandler{
             boolean add = restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             return restTemplate.getForObject(url,type);
         } catch (Exception e) {
-            Log.e("RequestHandler", e.getMessage(), e);
-            e.printStackTrace();
-            System.out.println("vjvbjbjbjb jvbjbjbjb "+url);
+            Log.e("RequestHandler", "getResource: "+e.getMessage(), e);
+//            e.printStackTrace();
+//            System.out.println("vjvbjbjbjb jvbjbjbjb "+url);
         }
         return null;
     }

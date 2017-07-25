@@ -1,4 +1,6 @@
-package com.neel.articleshub.restapi.beans;
+package com.neel.articleshubapi.restapi.beans;
+
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +69,17 @@ public class ArticleDetail {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Link getLink(String name){
+        try{
+            for(Link l:getLinks())
+                if(l.getName().equals(name))
+                    return l;
+        }catch(Exception ex){
+            Log.e("ArticleDetail", "getLink: "+ex.getMessage(),ex);
+        }
+        return null;
     }
 
 }

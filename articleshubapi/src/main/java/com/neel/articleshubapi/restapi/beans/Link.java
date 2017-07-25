@@ -1,4 +1,4 @@
-package com.neel.articleshub.restapi.beans;
+package com.neel.articleshubapi.restapi.beans;
 
 /**
  * Created by Neel Patel on 24-07-2017.
