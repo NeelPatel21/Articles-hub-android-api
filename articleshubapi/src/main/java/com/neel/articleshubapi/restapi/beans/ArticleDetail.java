@@ -82,4 +82,8 @@ public class ArticleDetail {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "ArticleDetail:- articleId: "+getArticleId()+", title: "+getTitle();
+    }
 }

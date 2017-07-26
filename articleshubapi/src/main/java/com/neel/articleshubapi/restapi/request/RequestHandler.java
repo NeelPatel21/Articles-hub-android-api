@@ -1,5 +1,6 @@
 package com.neel.articleshubapi.restapi.request;
 
+import android.text.LoginFilter;
 import android.util.Log;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class RequestHandler{
     public <T> T getResource(Class<T> type,String url){
+        Log.i("RequestHandler","Request: "+url+", Class: "+type.getName());
         try {
             RestTemplate restTemplate = new RestTemplate();
             boolean add = restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());

@@ -31,4 +31,8 @@ public class Link {
         this.url = url;
     }
 
+    @Override
+    public String toString() {
+        return "Link:- name: "+getName()+", link: "+getUrl();
+    }
 }
