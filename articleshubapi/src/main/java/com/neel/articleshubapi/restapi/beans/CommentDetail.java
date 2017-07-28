@@ -70,4 +70,8 @@ public class CommentDetail {
         this.time = time;
     }
 
+    @Override
+    public String toString() {
+        return "CommentDetail:- comment_id: "+getCommentId()+", article_id: "+getArticleId();
+    }
 }
