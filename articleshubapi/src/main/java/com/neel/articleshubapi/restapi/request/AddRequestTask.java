@@ -14,28 +14,31 @@ import java.util.Map.Entry;
  * Created by Neel Patel on 24-07-2017.
  */
 
-public class RequestTask<T> extends AsyncTask<String,Void,T> {
+public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
 
     private Class<T> type;
     private Map<String,String> headers=new HashMap<>();
     private HttpMethod meth;
+    private R requestObj;
 
-    public RequestTask(Class<T> type, HttpMethod meth, Entry<String,String> ... header) {
+    public AddRequestTask(Class<T> type, R requestObj, HttpMethod meth,
+                          Entry<String,String> ... header) {
         this.type=type;
         this.meth=meth;
+        this.requestObj=requestObj;
         for(Entry<String,String> i:header){
             headers.put(i.getKey(),i.getValue());
         }
     }
 
-    public RequestTask(Class<T> type, Entry<String,String> ... header) {
-        this(type, HttpMethod.GET, header);
+    public AddRequestTask(Class<T> type, R requestObj, Entry<String,String> ... header) {
+        this(type, requestObj, HttpMethod.GET, header);
     }
 
     @Override
     protected T doInBackground(String... params) {
         try {
-            return new RequestHandler().getResource(type, params[0], meth, headers);
+            return new RequestHandler().getResource(type, params[0], meth, requestObj, headers);
         }catch(Exception ex){
 //            System.err.println("do in back");
 //            ex.printStackTrace();
