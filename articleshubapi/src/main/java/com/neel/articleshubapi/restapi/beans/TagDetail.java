@@ -31,6 +31,7 @@ import java.util.List;
 
 /**
  * Created by Neel Patel on 8/3/2017.
+ * @author Neel Patel
  */
 
 public class TagDetail {
