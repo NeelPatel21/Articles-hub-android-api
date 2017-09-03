@@ -46,10 +46,13 @@ import java.util.Map.Entry;
  * Note:- It is mandatory to use other threads then main Activity thread to call
    methods of this class as they contains network access permission which is not
    permitted from main Activity thread.<br>
- * It is recommended use 'RequestTask' or 'AddRequestTask' instead as these
-   classes provide higher functionalities & can be used from main activity thread.<br>
+ * It is recommended use 'RequestTask' or 'AddRequestTask' instead as they provides
+   higher functionalities & can be used from main activity thread.<br>
  * Created by Neel Patel on 24-07-2017.
  * @author Neel Patel
+ * @see com.neel.articleshubapi.restapi.request.RequestTask
+ * @see com.neel.articleshubapi.restapi.request.AddRequestTask
+ * @version 1.0.0
  */
 
 public class RequestHandler{

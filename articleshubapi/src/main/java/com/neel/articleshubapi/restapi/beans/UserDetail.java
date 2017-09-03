@@ -32,6 +32,7 @@ import java.util.List;
 /**
  * Created by Neel Patel on 26-07-2017.
  * @author Neel Patel
+ * @version 1.0.0
  */
 
 public class UserDetail {

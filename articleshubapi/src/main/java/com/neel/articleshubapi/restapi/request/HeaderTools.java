@@ -30,6 +30,7 @@ import java.util.Map.Entry;
  * this is factory class provide to provide facilities to make & modify Http Headers.
  * Created by Neel Patel on 8/3/2017.
  * @author Neel Patel
+ * @version 1.0.0
  */
 
 public class HeaderTools {

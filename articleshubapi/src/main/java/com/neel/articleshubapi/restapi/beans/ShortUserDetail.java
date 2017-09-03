@@ -27,6 +27,7 @@ package com.neel.articleshubapi.restapi.beans;
 /**
  * Created by Neel Patel on 8/3/2017.
  * @author Neel Patel
+ * @version 1.0.0
  */
 
 public class ShortUserDetail {

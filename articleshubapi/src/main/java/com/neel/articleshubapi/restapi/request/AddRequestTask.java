@@ -34,8 +34,45 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 
-/**
+/**this class provides functionalities to make http request on restful webservice.
+ * thia class is advanced version of 'RequestTask'.
+ * additionally this class can be able to make any http request WITH BODY.
+ * it provides functionality to parse POJO objects to Json as well as
+   Http Json response in POJO objects.<br><br>
+ * following snapshot of code can be used to update article having id '1'<br>
+ * <pre>
+ * {@code
+        article.setAuthor("username");
+        article.setTitle("android test");
+        article.setArticleId(1);
+        article.getContent().add("android update");
+        AddRequestTask<String,ArticleDetail> rt6=new AddRequestTask<String, ArticleDetail>(String.class,
+                article, HttpMethod.PUT, HeaderTools.CONTENT_TYPE_JSON,
+                HeaderTools.makeAuth("402881825d691eaa015d693baadf0000"));
+        rt6.execute(BASE_URL+"/article/1");
+   }
+ * </pre>
+ * <br><br>
+ * if the response is in form of plan text then the generic type must be String.<br>
+ * following snapshot of code can be used to login user.<br>
+ * <pre>
+ * {@code
+        UserDetail login =new UserDetail();
+        login.setUserName("username");
+        login.setPass("pass");
+        AddRequestTask<String,UserDetail> rt4=new AddRequestTask<String, UserDetail>(String.class,
+                login, HttpMethod.POST, HeaderTools.CONTENT_TYPE_JSON, HeaderTools.ACCEPT_TEXT);
+        rt4.execute(BASE_URL+"/authentication/username");
+        String token = rt4.getObj());
+   }
+ * </pre>
+ * <br><br>
  * Created by Neel Patel on 24-07-2017.
+ * @author Neel Patel
+ * @see com.neel.articleshubapi.restapi.request.RequestTask
+ * @see com.neel.articleshubapi.restapi.request.HeaderTools
+ * @see android.os.AsyncTask
+ * @version 1.0.0
  */
 
 public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
