@@ -29,6 +29,8 @@ import android.util.Log;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -57,6 +59,7 @@ import java.util.Map.Entry;
 
 public class RequestHandler{
 
+    private HttpStatus httpStatus;
     /**
      * this method will make http request using parameters provided.
      * request object will be parsed to json format & Http response will be parsed
@@ -91,8 +94,9 @@ public class RequestHandler{
 
 
 //            Log.i("test2",request.toString());
-            HttpEntity<T> response;
+            ResponseEntity<T> response;
             response = restTemplate.exchange(url,meth,request,type);
+            this.httpStatus = response.getStatusCode();
             return response.hasBody()?response.getBody():null;
 //            return restTemplate.getForObject(url,type,header);
         } catch (Exception e) {
@@ -150,6 +154,10 @@ public class RequestHandler{
      */
     public <T> T getResource(Class<T> type, String url){
         return getResource(type, url, HttpMethod.GET);
+    }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
     }
 
 }

@@ -28,6 +28,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +82,7 @@ public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
     private Map<String,String> headers=new HashMap<>();
     private HttpMethod meth;
     private R requestObj;
+    private HttpStatus httpStatus;
 
     public AddRequestTask(Class<T> type, R requestObj, HttpMethod meth,
                           Entry<String,String> ... header) {
@@ -99,7 +101,10 @@ public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
     @Override
     protected T doInBackground(String... params) {
         try {
-            return new RequestHandler().getResource(type, params[0], meth, requestObj, headers);
+            RequestHandler rh = new RequestHandler();
+            T obj=rh.getResource(type, params[0], meth, requestObj, headers);
+            this.httpStatus = rh.getHttpStatus();
+            return obj;
         }catch(Exception ex){
 //            System.err.println("do in back");
 //            ex.printStackTrace();
@@ -126,4 +131,9 @@ public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
         }
         return null;
     }
+
+    public HttpStatus getHttpStatus() {
+        return httpStatus;
+    }
+
 }
