@@ -44,7 +44,10 @@ import java.util.Map.Entry;
  * {@code
         RequestTask<ArticleDetail> rt=new RequestTask<>(ArticleDetail.class,CONTENT_TYPE_JSON);
         rt.execute(BASE_URL+"/article/"+2);
+        // initiate waiting logic
         ArticleDetail article=rt.getObj();
+        // terminate waiting logic
+        HttpStatus status = rt.getHttpStatus();
    }
  * </pre>
  * <br><br>
@@ -54,10 +57,12 @@ import java.util.Map.Entry;
    who liked article with id '1'.<br>
  * <pre>
  * {@code
-        RequestTask<ShortUserDetail[]> rt2=
+        RequestTask<ShortUserDetail[]> rt=
                     new RequestTask<>(ShortUserDetail[].class,CONTENT_TYPE_JSON);
-        rt2.execute(BASE_URL+"/article/1/likes");
-        ShortUserDetail[] ud=rt2.getObj();
+        rt.execute(BASE_URL+"/article/1/likes");
+        // initiate waiting logic
+        ShortUserDetail[] ud=rt.getObj();
+        // terminate waiting logic
    }
  * </pre>
  * <br><br>
@@ -67,10 +72,14 @@ import java.util.Map.Entry;
  * following snapshot of code can be used to add like on article.<br>
  * <pre>
  * {@code
-        RequestTask<String> rt5=new RequestTask<String>(String.class, HttpMethod.POST,
+        RequestTask<String> rt=new RequestTask<String>(String.class, HttpMethod.POST,
                 HeaderTools.CONTENT_TYPE_JSON,
-                HeaderTools.makeAuth("402881825d691eaa015d693baadf0000"));
-        rt5.execute(BASE_URL+"/user/username/like/1");
+                HeaderTools.makeAuth(token));
+        rt.execute(BASE_URL+"/user/username/like/1");
+        // initiate waiting logic
+        rt.getObj();
+        // terminate waiting logic
+        HttpStatus status = rt.getHttpStatus();
    }
  * </pre>
  * <br><br>
@@ -79,7 +88,7 @@ import java.util.Map.Entry;
  * @see com.neel.articleshubapi.restapi.request.AddRequestTask
  * @see com.neel.articleshubapi.restapi.request.HeaderTools
  * @see android.os.AsyncTask
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 public class RequestTask<T> extends AsyncTask<String,Void,T> {
@@ -150,6 +159,9 @@ public class RequestTask<T> extends AsyncTask<String,Void,T> {
         return null;
     }
 
+    /**
+     * @return http status code of last request
+     */
     public HttpStatus getHttpStatus() {
         return httpStatus;
     }

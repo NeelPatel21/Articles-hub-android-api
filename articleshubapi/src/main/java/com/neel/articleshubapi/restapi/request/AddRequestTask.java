@@ -43,14 +43,19 @@ import java.util.Map.Entry;
  * following snapshot of code can be used to update article having id '1'<br>
  * <pre>
  * {@code
+        ArticleDetail article = new ArticleDetail();
         article.setAuthor("username");
         article.setTitle("android test");
         article.setArticleId(1);
         article.getContent().add("android update");
-        AddRequestTask<String,ArticleDetail> rt6=new AddRequestTask<String, ArticleDetail>(String.class,
+        AddRequestTask<String,ArticleDetail> rt=new AddRequestTask<String, ArticleDetail>(String.class,
                 article, HttpMethod.PUT, HeaderTools.CONTENT_TYPE_JSON,
-                HeaderTools.makeAuth("402881825d691eaa015d693baadf0000"));
-        rt6.execute(BASE_URL+"/article/1");
+                HeaderTools.makeAuth(token));
+        rt.execute(BASE_URL+"/article/1");
+        // initiate waiting logic
+        rt.getObj();
+        // terminate waiting logic
+        HttpStatus status = rt.getHttpStatus();
    }
  * </pre>
  * <br><br>
@@ -61,10 +66,13 @@ import java.util.Map.Entry;
         UserDetail login =new UserDetail();
         login.setUserName("username");
         login.setPass("pass");
-        AddRequestTask<String,UserDetail> rt4=new AddRequestTask<String, UserDetail>(String.class,
+        AddRequestTask<String,UserDetail> rt=new AddRequestTask<String, UserDetail>(String.class,
                 login, HttpMethod.POST, HeaderTools.CONTENT_TYPE_JSON, HeaderTools.ACCEPT_TEXT);
-        rt4.execute(BASE_URL+"/authentication/username");
-        String token = rt4.getObj());
+        rt.execute(BASE_URL+"/authentication/username");
+        // initiate waiting logic
+        String token = rt.getObj());
+        // terminate waiting logic
+        HttpStatus status = rt.getHttpStatus();
    }
  * </pre>
  * <br><br>
@@ -73,7 +81,7 @@ import java.util.Map.Entry;
  * @see com.neel.articleshubapi.restapi.request.RequestTask
  * @see com.neel.articleshubapi.restapi.request.HeaderTools
  * @see android.os.AsyncTask
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
@@ -132,6 +140,9 @@ public class AddRequestTask<T,R> extends AsyncTask<String,Void,T> {
         return null;
     }
 
+    /**
+     * @return http status code of last request
+     */
     public HttpStatus getHttpStatus() {
         return httpStatus;
     }

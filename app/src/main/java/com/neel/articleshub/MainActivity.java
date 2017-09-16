@@ -12,6 +12,7 @@ import com.neel.articleshubapi.restapi.request.HeaderTools;
 import com.neel.articleshubapi.restapi.request.RequestTask;
 
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 
 import static com.neel.articleshubapi.restapi.request.HeaderTools.CONTENT_TYPE_JSON;
 
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     login, HttpMethod.POST, HeaderTools.CONTENT_TYPE_JSON, HeaderTools.ACCEPT_TEXT);
             rt4.execute(getResources().getString(R.string.ser_base_url)+"/authentication/user1");
             Log.i("login",rt4.getObj());
+            HttpStatus status = rt4.getHttpStatus();
             RequestTask<String> rt5=new RequestTask<String>(String.class,
                      HttpMethod.POST, HeaderTools.CONTENT_TYPE_JSON, HeaderTools.makeAuth("402881825d691eaa015d693baadf0000"));
             rt5.execute(getResources().getString(R.string.ser_base_url)+"/user/juser/like/13");

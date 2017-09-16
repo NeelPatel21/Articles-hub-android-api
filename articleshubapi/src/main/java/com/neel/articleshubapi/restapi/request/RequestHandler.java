@@ -54,7 +54,7 @@ import java.util.Map.Entry;
  * @author Neel Patel
  * @see com.neel.articleshubapi.restapi.request.RequestTask
  * @see com.neel.articleshubapi.restapi.request.AddRequestTask
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 public class RequestHandler{
@@ -156,6 +156,9 @@ public class RequestHandler{
         return getResource(type, url, HttpMethod.GET);
     }
 
+    /**
+     * @return http status code of last request
+     */
     public HttpStatus getHttpStatus() {
         return httpStatus;
     }
