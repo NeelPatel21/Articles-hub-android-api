@@ -37,6 +37,8 @@ import java.util.List;
 
 public class UserDetail {
     private String userName;
+    private String firstName;
+    private String lastName;
     private String info;
     private String emailId;
     private String pass;
@@ -54,6 +56,34 @@ public class UserDetail {
      */
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    /**
+     * @return firstname
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName firstname
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return lastname
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName lastname
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**

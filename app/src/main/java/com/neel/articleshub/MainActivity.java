@@ -54,16 +54,16 @@ public class MainActivity extends AppCompatActivity {
 //            CommentDetail com=rt3.getObj();
 //            Log.i("comment",com.toString());
             UserDetail login =new UserDetail();
-            login.setUserName("juser");
-            login.setPass("pass");
+            login.setUserName("user1");
+            login.setPass("password");
             AddRequestTask<String,UserDetail> rt4=new AddRequestTask<String, UserDetail>(String.class,
                     login, HttpMethod.POST, HeaderTools.CONTENT_TYPE_JSON, HeaderTools.ACCEPT_TEXT);
-            rt4.execute(getResources().getString(R.string.ser_base_url)+"/authentication/juser");
+            rt4.execute(getResources().getString(R.string.ser_base_url)+"/authentication/user1");
             Log.i("login",rt4.getObj());
             RequestTask<String> rt5=new RequestTask<String>(String.class,
                      HttpMethod.POST, HeaderTools.CONTENT_TYPE_JSON, HeaderTools.makeAuth("402881825d691eaa015d693baadf0000"));
             rt5.execute(getResources().getString(R.string.ser_base_url)+"/user/juser/like/13");
-            article.setAuthor("juser");
+            article.setAuthor("user1");
             article.setTitle("android test");
             article.setArticleId(29);
             article.getContent().add("android update");

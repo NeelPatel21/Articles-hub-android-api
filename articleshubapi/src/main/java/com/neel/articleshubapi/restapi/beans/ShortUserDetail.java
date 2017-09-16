@@ -27,11 +27,13 @@ package com.neel.articleshubapi.restapi.beans;
 /**
  * Created by Neel Patel on 8/3/2017.
  * @author Neel Patel
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 public class ShortUserDetail {
     private String userName;
+    private String firstName;
+    private String lastName;
     private String emailId;
     private String link;
 
@@ -47,6 +49,34 @@ public class ShortUserDetail {
      */
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    /**
+     * @return firstname
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName firstname
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return lastname
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName lastname
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**
